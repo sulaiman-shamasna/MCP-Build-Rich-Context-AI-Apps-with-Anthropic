@@ -66,7 +66,7 @@ def search_papers(topic: str, max_results: int = 5) -> List[str]:
     
     return paper_ids
 
-# print(search_papers("computers"))
+# print(search_papers("Quantum Chromodynamics"))
 
 def extract_info(paper_id: str) -> str:
     """
@@ -231,5 +231,6 @@ def chat_loop():
         except Exception as e:
             print(f"\nError: {str(e)}")
 
-chat_loop()
+if __name__ == "__main__":
+    chat_loop()
 
