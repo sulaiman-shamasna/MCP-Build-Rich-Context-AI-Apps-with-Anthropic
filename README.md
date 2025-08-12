@@ -51,7 +51,7 @@ python mcp_server.py
 
 2. **Run the Inspector**:
    ```bash
-   npx @modelcontextprotocol/inspector uv run mcp_server.py
+   npx @modelcontextprotocol/inspector uv run mcp_server.py    # What this is going to do (first part - npx @modelcontextprotocol/inspector) is pull in the command to start this server, so that I don't have to start it locally. And then the command I wnat to use to run the application is (the second part - uv run mcp_server.py)
    ```
 
 - ***Alternatively***:
@@ -190,3 +190,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 2. ![mcp-tools.png](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/docs/mcp-tools.png)
 3. ![mcp-tools-test.png](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/docs/mcp-tools-test.png)
 4. ![mcp-tools-test-with-paper-id.png](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/docs/mcp-tools-test-with-paper-id.png)
+5. ![run_mcp_client.png](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/docs/run_mcp_client.png)
+6. ![run_mcp_chatbot.png](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/docs/run_mcp_chatbot.png)
+
+### STEPS
+
+3. mcp_client.py : With MCP Server ready, now it's time to create an MCP client inside the chatbot, to let the chatbot communicate with the server and get access to the tool definitions and results. In the CMP Client, we move past the inspector and build our own host to contain a client to talk to our MCP Server.
+
+4. The first server - fetch server allows us to retrieve content from web pages, convert HTML to markdown so that LLMs can better consume that content. The second server - file system server, which is gonna be a way for us to access our file system, reading, writing files, getting metadata and so on.
