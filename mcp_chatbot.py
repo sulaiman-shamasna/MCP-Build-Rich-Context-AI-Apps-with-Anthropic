@@ -70,9 +70,44 @@ class MCP_ChatBot:
         except Exception as e:
             print(f"Error loading server configuration: {e}")
             raise
+
+    def _format_tool_content(self, result) -> str:
+        """Convert MCP tool result content to a plain string for OpenAI tool messages."""
+        try:
+            content = getattr(result, "content", result)
+            if isinstance(content, list):
+                parts = []
+                for item in content:
+                    if isinstance(item, dict):
+                        if item.get("type") == "text" and "text" in item:
+                            parts.append(item["text"])
+                        else:
+                            parts.append(json.dumps(item))
+                    else:
+                        parts.append(str(item))
+                return "\n".join(parts)
+            if isinstance(content, (dict, list)):
+                return json.dumps(content)
+            return str(content)
+        except Exception:
+            return str(result)
     
     async def process_query(self, query):
-        messages = [{'role':'user', 'content':query}]
+        system_instruction = (
+            "You are a helpful assistant with access to multiple MCP servers and their tools. "
+            "Follow these rules: "
+            "1) Use the 'fetch' tool for HTTP/HTTPS URLs. "
+            "2) When the user asks to save or write content, ALWAYS use the filesystem 'write_file' tool. "
+            "   - Prefer writing to './<filename>' in the current working directory if allowed. "
+            "   - If paths are restricted, first call 'list_allowed_directories' and choose an allowed directory. "
+            "3) After fetching content from the web, summarize or transform as requested, then persist the result using 'write_file'. "
+            "4) For diagrams, produce an ASCII/textual diagram and save it to a .txt or .md file using 'write_file'. "
+            "5) Confirm the exact file path after saving. "
+        )
+        messages = [
+            {'role': 'system', 'content': system_instruction},
+            {'role': 'user', 'content': query}
+        ]
         response = self.openai_client.chat.completions.create(
             model="gpt-4o-mini",
             messages=messages,
@@ -115,7 +150,7 @@ class MCP_ChatBot:
                     messages.append({
                         "role": "tool",
                         "tool_call_id": tool_id,
-                        "content": result.content
+                        "content": self._format_tool_content(result)
                     })
                 
                 response = self.openai_client.chat.completions.create(
