@@ -198,3 +198,19 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 3. mcp_client.py : With MCP Server ready, now it's time to create an MCP client inside the chatbot, to let the chatbot communicate with the server and get access to the tool definitions and results. In the CMP Client, we move past the inspector and build our own host to contain a client to talk to our MCP Server.
 
 4. The first server - fetch server allows us to retrieve content from web pages, convert HTML to markdown so that LLMs can better consume that content. The second server - file system server, which is gonna be a way for us to access our file system, reading, writing files, getting metadata and so on.
+
+5. So far, the MCP Server only provided tools to the chatbot. Now, you'll update your server so that it also provides resources and a prompt template. On the chatbot side, you'll expose those features to the user
+
+
+### OUTPUTS
+1. to test, e.g., the ```mcp_chatbot.py``` file, please run the command:
+   ```bash
+   uv run mcp_chatbot.py
+   ```
+
+   And give e.g., the following query
+
+   ```bash
+   Fetch the content of this website: https://modelcontextprotocol.io/docs/concepts/architecture and save the content in the file "mcp_summary.md", create a visual diagram that summarizes the content of "mcp_summary.md" and save it in a text file
+   ```
+   Then, you are supposed to receive a good answer. Also, you might have the following two files generated in your working directory; ```mcp_diagram.txt``` and ```mcp_system.md``` - The output might vary due to prompt or other non-deterministic factors.
