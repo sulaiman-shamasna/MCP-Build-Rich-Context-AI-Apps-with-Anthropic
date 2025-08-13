@@ -1,0 +1,21 @@
+MCP Architecture Diagram
+
++-------------------+         +-------------------+         +-------------------+
+|     MCP Host      | <-----> |    MCP Client     | <-----> |    MCP Server     |
+|                   |         |                   |         |                   |
+|                   |         |                   |         |                   |
++-------------------+         +-------------------+         +-------------------+
+         |                              |                             |
+         |                              |                             |
+         |                              |                             |
+ +-------------------+         +-------------------+                 |
+ |    Data Layer     | <-----> |  Transport Layer   | <--------------+
+ |  (JSON-RPC 2.0)   |         |   (Communication   |
+ |                   |         |   Mechanisms)      |
+ +-------------------+         +-------------------+  
+
+- **MCP Host**: AI application coordinating multiple MCP Clients.
+- **MCP Client**: Connects to MCP Server to obtain context.
+- **MCP Server**: Provides context data to MCP Clients.
+- **Data Layer**: Defines the protocol for communication.
+- **Transport Layer**: Handles the mechanisms for data exchange.
