@@ -214,3 +214,29 @@ This project is licensed under the MIT License - see the LICENSE file for detail
    Fetch the content of this website: https://modelcontextprotocol.io/docs/concepts/architecture and save the content in the file "mcp_summary.md", create a visual diagram that summarizes the content of "mcp_summary.md" and save it in a text file
    ```
    Then, you are supposed to receive a good answer. Also, you might have the following two files generated in your working directory; ```mcp_diagram.txt``` and ```mcp_system.md``` - The output might vary due to prompt or other non-deterministic factors.
+
+
+### DOCUMENTATION
+
+1. **MCP Architecture**
+
+![mcp_client_server_architecture.svg](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/Diagrams/mcp_client_server_architecture.svg)
+
+---
+
+![mcp_chatbot.svg](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/Diagrams/mcp_chatbot.svg)
+
+---
+
+![mcp_client_server_architectures_and_components.svg](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/Diagrams/mcp_client_server_architectures_and_components.svg)
+
+---
+
+![mcp_resources.svg](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/Diagrams/mcp_resources.svg)
+
+---
+
+![mcp_prompts.svg](https://github.com/sulaiman-shamasna/MCP-Build-Rich-Context-AI-Apps-with-OpenAI/blob/main/Diagrams/mcp_prompts.svg)
+
+---
+
